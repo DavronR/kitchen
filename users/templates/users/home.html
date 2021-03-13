@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="row row-cols-4 mt-5">
+        {% for kitchen in kitchens %} 
+            <div class="col ml-2 mb-3">
+                {% include "users/kitchen_card.html" %} 
+            </div>
+        {% endfor %}  
+    </div>
+{% endblock %}
+

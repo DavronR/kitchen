@@ -1,0 +1,9 @@
+<div class="card" style="width: 18rem;">
+    <a href="{% url 'kitchen_detail' kitchen.user.id %}">
+      <img src="{{ kitchen.image.url }}" class="card-img-top img-thumbnail" style="max-height: 250px;" alt="...">
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">{{ kitchen.name }}
+      <a href="{% url 'kitchen_detail' kitchen.user.id %}" class="btn btn-primary">Shop Now</a>
+    </div>
+</div>

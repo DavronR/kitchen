@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Registration Page!</h1>
+    <p class="lead">Please choose account type to sign up</p>
+    <a class="btn btn-success" href="{% url 'kitchen_register' %}">Serivice Provider Sign Up</a>
+    <a class="btn btn-primary" href="{% url 'customer_register' %}">Customer Sign Up</a>
+</div>
+
+{% endblock %}
