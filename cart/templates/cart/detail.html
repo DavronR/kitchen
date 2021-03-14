@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="row mt-5">
+        <div class="col mt-5">
+            <h1 class="display-4 text-center">Cart</h1>
+            {% if cart %}
+                {% include "cart/cart_table.html" %}
+                <a href="{% url 'check_out' %}" type="button" class="btn btn-primary">Check out</a>
+            {% else %}
+            <h2 class="lead">Empty Cart</h2>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

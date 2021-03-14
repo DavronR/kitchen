@@ -46,10 +46,18 @@ class ItemAddForm(forms.ModelForm):
 
 
 class AddItemToCartForm(forms.Form):
-    add_to_cart = forms.BooleanField(label="Add to cart")
+    id = forms.IntegerField(required=False, widget=forms.HiddenInput())
+    name = forms.CharField(required=False, widget=forms.HiddenInput())
+    price = forms.DecimalField(required=False, widget=forms.HiddenInput())
+    kitchen = forms.IntegerField(required=False, widget=forms.HiddenInput())
+    add_to_cart = forms.BooleanField(required=False, label="Add to cart")
 
     class Meta:
         widgets = {
-            "add_to_cart": forms.CheckboxInput(attrs={"class": "form-check-input mt-2" })
+            "add_to_cart": forms.CheckboxInput(attrs={"class": "form-check-input mt-2 " })
         }
 
+
+class AddToCartForm(forms.Form):
+    pass
+    

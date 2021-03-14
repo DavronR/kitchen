@@ -1,6 +1,7 @@
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import redirect, render
 from django.views.generic import CreateView
+from django.contrib import messages
 
 from .forms import KitchenSignupForm, CustomerSignupForm, LoginForm
 from .models import User
@@ -34,6 +35,7 @@ class CustomerSignupView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
+        messages.success(request, f'Your account has been created!')
         return redirect('home')
 
 
@@ -62,5 +64,6 @@ def user_login(request):
 
 
 def logout_user(request):
+    messages.success(request, f'You have been logged out.')
     logout(request)
     return redirect("home")
