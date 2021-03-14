@@ -54,7 +54,7 @@ class AddItemToCartForm(forms.Form):
 
     class Meta:
         widgets = {
-            "add_to_cart": forms.CheckboxInput(attrs={"class": "form-check-input mt-2 " })
+            "add_to_cart": forms.CheckboxInput(attrs={"class": "form-check-input mt-2" })
         }
 
 

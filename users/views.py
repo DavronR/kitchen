@@ -35,7 +35,7 @@ class CustomerSignupView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        messages.success(request, f'Your account has been created!')
+        messages.success(self.request, f'Your account has been created!')
         return redirect('home')
 
 

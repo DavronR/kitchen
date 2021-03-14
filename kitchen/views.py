@@ -64,7 +64,7 @@ def create_kitchen(request, user_id):
                 item = f.save(commit=False)
                 item.kithen = kitchen 
                 item.save()
-                messages.success(request, f'Your Kitchen has been been created!')
+            messages.success(request, f'Your Kitchen has been been created!')
             return redirect("home")
     else:
         formset = ItemFormSet(queryset=Item.objects.none())

@@ -34,6 +34,9 @@ def check_out(request):
     if not request.user.is_authenticated:
         messages.warning(request, f'Please Sign in before proceeding to checkout')
         return redirect("login")
+    if request.user.is_kitchen:
+        messages.warning("Please sign in as customer")
+        return redirect("login")
 
     cart = request.session.get("cart", None)
     if cart is None:
