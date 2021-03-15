@@ -4,7 +4,7 @@ from django.views.generic import CreateView
 from django.contrib import messages
 
 from .forms import KitchenSignupForm, CustomerSignupForm, LoginForm
-from .models import User
+from .models import User, Answer
 from kitchen.models import Kitchen
 
 
@@ -19,6 +19,8 @@ class KitchenSignupView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        answer1 = Answer.objects.create(answer=form.cleaned_data["answer1"], user=user)
+        answer2 = Answer.objects.create(answer=form.cleaned_data["answer2"], user=user)
         login(self.request, user)
         return redirect('kitchen_create', user.id)
 
@@ -34,6 +36,8 @@ class CustomerSignupView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        answer1 = Answer.objects.create(answer=form.cleaned_data["answer1"], user=user)
+        answer2 = Answer.objects.create(answer=form.cleaned_data["answer2"], user=user)
         login(self.request, user)
         messages.success(self.request, f'Your account has been created!')
         return redirect('home')
@@ -44,7 +48,7 @@ def sign_up(request):
 
 
 def home(request):
-    kitchens = Kitchen.objects.all()
+    kitchens = Kitchen.objects.filter(user__is_active=True).all()
     return render(request, "users/home.html", {"kitchens": kitchens})
 
 def user_login(request):

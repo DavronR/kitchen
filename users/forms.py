@@ -8,9 +8,18 @@ from kitchen.models import Kitchen, Day
 
 
 class KitchenSignupForm(UserCreationForm):
+    sec1 = forms.CharField(label="Security Question", 
+                    widget = forms.TextInput(attrs={'readonly':'readonly', "class": "form-control"}), initial="What is your pet's name?")
+    sec2 = forms.CharField(label="Security Question", 
+                    widget = forms.TextInput(attrs={'readonly':'readonly', "class": "form-control"}), initial="What is your childhood nickname?")
+    answer1 = forms.CharField(label="Answer", max_length=200)
+    answer2 = forms.CharField(label="Answer", max_length=200)
+    
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ["username", "email", "password1", "password2", ]
+        fields = ["username", "first_name", "last_name", "email", 
+                        "password1", "password2", "sec1", "answer1", "sec2", "answer2", ]
+
 
     @transaction.atomic
     def save(self):
@@ -22,8 +31,16 @@ class KitchenSignupForm(UserCreationForm):
 
 
 class CustomerSignupForm(UserCreationForm):
+    sec1 = forms.CharField(label="Security Question", 
+                    widget = forms.TextInput(attrs={'readonly':'readonly', "class": "form-control"}), initial="What is your pet's name?")
+    sec2 = forms.CharField(label="Security Question", 
+                    widget = forms.TextInput(attrs={'readonly':'readonly', "class": "form-control"}), initial="What is your childhood nickname?")
+    answer1 = forms.CharField(label="Answer", max_length=200)
+    answer2 = forms.CharField(label="Answer", max_length=200)
     class Meta(UserCreationForm.Meta):
         model = User
+        fields = ["username", "first_name", "last_name", "email", 
+                        "password1", "password2", "sec1", "answer1", "sec2", "answer2", ]
 
     @transaction.atomic
     def save(self):

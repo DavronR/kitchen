@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User
+from .models import User, Answer
 
+admin.site.register(Answer)
 
 ADDITIONAL_USER_FIELDS = (
     (None, {'fields': ('is_kitchen', 'is_customer',)}),
